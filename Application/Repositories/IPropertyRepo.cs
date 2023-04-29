@@ -2,7 +2,7 @@
 
 namespace Application.Repositories
 {
-    public interface IProperty
+    public interface IPropertyRepo
     {
         Task AddNewAsync(Property property);
         Task DeleteAsync(Property property);
