@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.Models
 {
-    public class NewPropertyRequest
+    public class NewProperty
     {
         public string Name { get; set; }
 

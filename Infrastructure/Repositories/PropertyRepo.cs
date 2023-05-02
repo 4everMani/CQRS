@@ -1,6 +1,7 @@
 ﻿using Application.Repositories;
 using Domain;
 using Infrastructure.Contexts;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories
 {
-    public class PropertiesRepo : IPropertyRepo
+    public class PropertyRepo : IPropertyRepo
     {
 
         private readonly ApplicationDbContext _context;
 
-        public PropertiesRepo(ApplicationDbContext context)
+        public PropertyRepo(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -35,14 +36,15 @@ namespace Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<Property> GetByIdAsync(int id)
+        public async Task<Property> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Properties.FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public Task UpdateAsync(Property property)
+        public async Task UpdateAsync(Property property)
         {
-            throw new NotImplementedException();
+            _context.Properties.Update(property);
+            await _context.SaveChangesAsync();
         }
     }
 }

@@ -8,7 +8,8 @@ namespace Application.MappingProfiles
     {
         public Mappings()
         {
-            CreateMap<NewPropertyRequest, Property>();
+            CreateMap<NewProperty, Property>();
+            CreateMap<UpdateProperty, Property>();
         }
     }
 }

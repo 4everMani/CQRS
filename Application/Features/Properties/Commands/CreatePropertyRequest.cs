@@ -3,22 +3,17 @@ using Application.Repositories;
 using AutoMapper;
 using Domain;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Properties.Commands
 {
     // IRequest<bool> is the response which will be provided by this class as output
     public class CreatePropertyRequest : IRequest<bool>
     {
-        public NewPropertyRequest PropertyRequest { get; set; }
+        public NewProperty PropertyRequest { get; set; }
 
-        public CreatePropertyRequest(NewPropertyRequest newPropertyRequest)
+        public CreatePropertyRequest(NewProperty newPropertyRequest)
         {
-            PropertyRequest = newPropertyRequest;   
+            PropertyRequest = newPropertyRequest;
         }
     }
 
@@ -37,8 +32,9 @@ namespace Application.Features.Properties.Commands
         public async Task<bool> Handle(CreatePropertyRequest request, CancellationToken cancellationToken)
         {
             Property property = _mapper.Map<Property>(request.PropertyRequest);
-            await _propertyRepo.AddNewAsync(property);  
-            return true;    
+            property.ListDate = DateTime.Now;
+            await _propertyRepo.AddNewAsync(property);
+            return true;
         }
     }
 }
