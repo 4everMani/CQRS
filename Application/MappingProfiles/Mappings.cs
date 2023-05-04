@@ -10,6 +10,15 @@ namespace Application.MappingProfiles
         {
             CreateMap<NewProperty, Property>();
             CreateMap<UpdateProperty, Property>();
+            CreateMap<Property, PropertyDto>();
+            CreateMap<Property, List<PropertyDto>>();
+
+            CreateMap<NewImage, Image>();
+            CreateMap<UpdateImage, Image>();
+            CreateMap<Image, ImageDto>();
+            CreateMap<Image, List<ImageDto>>();
+
+
         }
     }
 }
