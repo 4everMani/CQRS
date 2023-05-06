@@ -42,7 +42,7 @@ namespace Application.PiplineBehaviours
                         errors.Add(failure.ErrorMessage);
                     }
 
-                    throw new CustomValidationException("Une or more validation failure(s) occured", errors);
+                    throw new CustomValidationException("One or more validation failure(s) occured", errors);
                     
                 }
             }
